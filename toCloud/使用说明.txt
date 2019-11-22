@@ -1,0 +1,31 @@
+Demo 使用说明
+1.修改 device_id，填入三元组信息；
+2.test_case.json 文件填入需要定时上报的属性或事件，需要确保属性是云端真实存在的；
+如属性：
+{
+    "identifier":"LightSwitch",
+    "value":1
+}
+如事件：
+{
+    "type":"event",
+    "identifier":"xxx",
+    "value":{
+        "xx":xxx
+    }
+}
+
+3.test_sub_case.json 文件填入子设备上报的事件或属性，需要确保属性是云端真实存在的；
+如属性：
+{
+    "identifier":"LightSwitch",
+    "value":1
+}
+如事件：
+{
+    "type":"event",
+    "identifier":"xxx",
+    "value":{
+        "xx":xxx
+    }
+}
