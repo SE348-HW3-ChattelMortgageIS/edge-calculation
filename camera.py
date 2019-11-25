@@ -1,6 +1,8 @@
 import cv2
 from NumbersGetter import getAccessToken,readImg,sendImg,getMessage
+from temprature import init, get_data
 import json
+import serial
 cam = cv2.VideoCapture(10)
 import base64
 img_counter = 0
@@ -16,13 +18,13 @@ import time
 #width, height = cam.get(3), cam.get(4)
 #print(width, height)
 
-def detail(status):
+def detail(status, tmp_data, hum_data):
     one = {"identifier":"Data"}
     #two = {"identifier":"Data","value":"{"Temperature":23.4,"status":status,"humidity":34.6"}"}
     #two = {"identifier":"Data","value":"{"Temperature":23.4,"status":"yes","humidity":34.6}"}
-    the_str1 = '{"identifier": "Data","value": "{\\"Temperature\\": 23.4,\\"status\\": \\"'
+    the_str1 = '{"identifier": "Data","value": "{\\"Temperature\\":' + str(hum_data) + ',\\"status\\": \\"'
     the_str2 = status
-    the_str3 = '\\",\\"humidity\\": 34.6}"}'
+    the_str3 = '\\",\\"humidity\\":' + str(tmp_data)  + '}"}'
     
     #print (the_str1)
     #print (the_str2)
@@ -36,7 +38,8 @@ def detail(status):
     #return out
 
 
-
+ser = init()
+flag ='-1'
 
 while cam.isOpened():
     time.sleep(2)
@@ -54,11 +57,10 @@ while cam.isOpened():
     f = open('./test_case.json','w')
     #f.truncate()
     if res > 0:
-        flag = "yes"
-    else:
-        flag = "no"
-
-    out_json = detail(flag)
+        flag = str(lis[0]%100)
+    tmp_data, hum_data = get_data(ser)
+    #tmp_data, hum_data = '0', '0'
+    out_json = detail(flag, tmp_data, hum_data)
     f.write(out_json)
     f.close()
        
