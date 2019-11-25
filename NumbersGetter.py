@@ -49,7 +49,7 @@ def getMessage(numberJson):
     return resultNum, resultList
 
 # 更新path以获得图片数据
-path = "./1.png"
-resJson = sendImg(readImg(path))
-res, lis = getMessage(resJson)
-print("内部数字字符", lis)
+#path = "./1.png"
+#resJson = sendImg(readImg(path))
+#res, lis = getMessage(resJson)
+#print("内部数字字符", lis)

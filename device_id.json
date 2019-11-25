@@ -1,0 +1,16 @@
+{
+  "productKey": "a1UJLmxdlhK",
+  "deviceName": "camera1",
+  "productSecret":"sk7pEyhukmOMDoYC",
+  "deviceSecret": "euupoJYvWnncBAi9eAQQekjQgiCSKh0f",
+  "subDevice": [
+    {
+      "productKey": "",
+      "deviceName": ""
+    },
+    {
+      "productKey": "",
+      "deviceName": ""
+    }
+  ]
+}
